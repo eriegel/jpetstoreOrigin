@@ -1,7 +1,12 @@
 pipeline {
-  agent none
+  agent {
+    node {
+      label 'start'
+    }
+    
+  }
   stages {
-    stage('') {
+    stage('error') {
       steps {
         git(url: 'https://github.com/eriegel/jpetstoreOrigin', branch: 'master')
       }
