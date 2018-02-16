@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Qualimetrie') { 
             steps {                
-                build job: 'JPetStore Sonar'
+                build job: 'JPetStoreSonar2'
             }
         }
     }
