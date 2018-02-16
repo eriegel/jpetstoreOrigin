@@ -3,7 +3,13 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
+            	echo 'Build des sources JPetStore'
                 build 'BuildJPetStore' 
+            }
+        }
+         stage('Deploy') { 
+            steps {
+                build job: 'JPetstoreDeploy'
             }
         }
         stage('Test') { 
