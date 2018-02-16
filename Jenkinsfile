@@ -6,12 +6,12 @@ pipeline {
                 build 'BuildJPetStore' 
             }
         }
-        stage('Qualimetrie') { 
+        stage('Test') { 
             steps {
                 build job: 'JPetStoreSeleniumMaven', parameters: [string(name: 'Browser', value: 'chrome')]
             }
         }
-        stage('Test') { 
+        stage('Qualimetrie') { 
             steps {                
                 build job: 'JPetStore Sonar'
             }
