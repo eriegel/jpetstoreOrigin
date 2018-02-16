@@ -1,15 +1,20 @@
 pipeline {
-  agent {
-    node {
-      label 'start'
+    agent any 
+    stages {
+        stage('Build') { 
+            steps {
+                build 'BuildJPetStore' 
+            }
+        }
+        stage('Qualimetrie') { 
+            steps {
+                build job: 'JPetStore Sonar'
+            }
+        }
+        stage('Test') { 
+            steps {
+                build job: 'JPetStoreSeleniumMaven', parameters: [string(name: 'Browser', value: 'chrome')]
+            }
+        }
     }
-    
-  }
-  stages {
-    stage('error') {
-      steps {
-        git(url: 'https://github.com/eriegel/jpetstoreOrigin', branch: 'master')
-      }
-    }
-  }
 }
